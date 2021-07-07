@@ -7,6 +7,9 @@ Pequeno guia para compilar o Aseprite de forma gratuita e
 
 ## Downloads necessários:
 
+(Baixe os arquivos na pasta Downloads para que os scripts funcionem)
+
+
 * Skia:
   * [Skia-x64](https://github.com/aseprite/skia/releases/download/m81-b607b32047/Skia-Linux-Release-x64.zip)
   * [Skia-x86](https://github.com/aseprite/skia/releases/download/m81-b607b32047/Skia-Linux-Release-x86.zip)
@@ -106,6 +109,36 @@ Após compilar, o comando `ninja aseprite` estará escrito no terminal, apenas d
 o processo. A esse ponto, o Aseprite está construido e pronto para ser usado, podendo abrir o programa rodando `~/aseprite/build/bin/./aseprite` . Caso queira construir o executável no menu de aplicações, continue seguindo o guia.
 
 ## Criando o .desktop:
+
+Copie e cole no terminal,
+
+```sh
+cd ~/Downloads
+wget -A png https://raw.githubusercontent.com/MrBertemes/Guia-Aseprite/main/icon.png
+mv icon.png ~/../../usr/share/icons/hicolor/48x48/apps
+cd ~/../../usr/share/applications/
+sudo echo "[Desktop Entry]" >> aseprite.desktop
+sudo echo "Type=Application" >> aseprite.desktop
+sudo echo "Name=Aseprite" >> aseprite.desktop
+sudo echo "Exec=sh -c "~/aseprite/build/bin/./aseprite" " >> aseprite.desktop
+sudo echo "Icon=/usr/share/icons/hicolor/48x48/apps/aseprite.png" >> aseprite.desktop
+sudo echo "Terminal=false" >> aseprite.desktop
+```
+
+---
+
+Feito por: [MrBertemes](https://github.com/MrBertemes)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
