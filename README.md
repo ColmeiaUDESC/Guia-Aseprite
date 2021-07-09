@@ -115,6 +115,3 @@ cd ~/Downloads ; wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia
 
 
 
-
-
-
