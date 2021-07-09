@@ -14,19 +14,15 @@ echo -e "\e[1;33m
  
 ----------------------------------------------------
  
- Feito por: https://github.com/MrBertemes
- 
-----------------------------------------------------
- 
  All rights reserved to: https://github.com/aseprite
  
 ----------------------------------------------------
 "
 
 
-cd ~/Downloads
-wget https://github.com/aseprite/skia/releases/download/m81-b607b32047/Skia-Linux-Release-x64.zip
-wget https://github.com/aseprite/aseprite/releases/download/v1.2.27/Aseprite-v1.2.27-Source.zip
+cd ~/Downloads;
+wget https://github.com/aseprite/skia/releases/download/m81-b607b32047/Skia-Linux-Release-x64.zip;
+wget https://github.com/aseprite/aseprite/releases/download/v1.2.27/Aseprite-v1.2.27-Source.zip;
 sudo apt-get install -y g++ cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
 cd ~ ;mkdir deps ;cd deps ;mkdir skia ;cd ~/Downloads ;sudo unzip Skia-Linux-Release-x64.zip -d ~/deps/skia
 cd ~; mkdir aseprite ;cd ~/Downloads ;sudo unzip Aseprite-v1.2.27-Source.zip -d ~/aseprite ;cd ~/aseprite; mkdir build ;cd build; cmake \
@@ -40,7 +36,7 @@ cd ~; mkdir aseprite ;cd ~/Downloads ;sudo unzip Aseprite-v1.2.27-Source.zip -d 
 ninja aseprite
 cd ~/Downloads ; 
 wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia-Aseprite/main/icon.png ;
-mv icon.png ~/../../usr/share/icons/hicolor/48x48/apps ;cd ~/../../usr/share/applications/ ;
+sudo mv icon.png ~/../../usr/share/icons/hicolor/48x48/apps ;cd ~/../../usr/share/applications/ ;
 sudo echo "[Desktop Entry]" >> aseprite.desktop ;
 sudo echo "Type=Application" >> aseprite.desktop ;
 sudo echo "Name=Aseprite" >> aseprite.desktop ;
