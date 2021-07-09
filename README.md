@@ -90,6 +90,7 @@ Copie e cole no terminal,
 
 ```sh
 cd ~/Downloads ; wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia-Aseprite/main/aseprite.png ;mv aseprite.png ~/../../usr/share/icons/hicolor/48x48/apps ;cd ~/../../usr/share/applications/ ;sudo echo "[Desktop Entry]" >> aseprite.desktop ;sudo echo "Type=Application" >> aseprite.desktop ;sudo echo "Name=Aseprite" >> aseprite.desktop ;sudo echo "Exec=sh -c "~/aseprite/build/bin/./aseprite" " >> aseprite.desktop ;sudo echo "Icon=/usr/share/icons/hicolor/48x48/apps/aseprite.png" >> aseprite.desktop ;sudo echo "Terminal=false" >> aseprite.desktop
+
 ```
 
 
