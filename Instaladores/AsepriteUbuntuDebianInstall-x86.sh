@@ -34,9 +34,11 @@ cd ~; mkdir aseprite ;cd ~/Downloads ;sudo unzip Aseprite-v1.2.27-Source.zip -d 
   -G Ninja \
   ..
 ninja aseprite
-cd ~/Downloads ; 
+cd ~/Downloads ;
+rm Skia-Linux-Release-x86.zip
+rm Aseprite-v1.2.27-Source.zip
 wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia-Aseprite/main/aseprite.png ;
-mv aseprite.png ~/../../usr/share/icons/hicolor/48x48/apps ;cd ~/../../usr/share/applications/ ;
+sudo mv aseprite.png ~/../../usr/share/icons/hicolor/48x48/apps ;cd ~/../../usr/share/applications/ ;
 sudo echo "[Desktop Entry]" >> aseprite.desktop ;
 sudo echo "Type=Application" >> aseprite.desktop ;
 sudo echo "Name=Aseprite" >> aseprite.desktop ;
