@@ -93,10 +93,28 @@ cd ~/Downloads ; wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia
 
 ```
 
+## Desinstalação
 
+Para desinstalar o Aseprite, basta ir até a pasta de instalação do aseprite (na pasta /home/nomedousuario) e apague a diretório "aseprite":
 
+```sh
+sudo rm -r ~/aseprite
+```
 
+Caso deseje apagar o Skia, uma das dependências necessárias para compilar o Aseprite, navegue até o diretório /home/nomedousuario/deps e apague o diretório nomeado "skia" (ou apague o diretório deps caso o skia seja a sua única subpasta)
 
+```sh
+sudo rm -r ~/deps/skia
+ou
+sudo rm -r ~/deps/
+```
+
+Para apagar o icone, execute os seguintes comandos no terminal:
+
+```sh
+sudo rm /usr/share/applications/aseprite.desktop
+sudo rm /usr/share/icons/hicolor/48x48/apps/aseprite.png
+```
 
 
 
