@@ -23,7 +23,7 @@ echo -e "\e[1;33m
 cd ~/Downloads;
 wget https://github.com/aseprite/skia/releases/download/m81-b607b32047/Skia-Linux-Release-x64.zip;
 wget https://github.com/aseprite/aseprite/releases/download/v1.2.27/Aseprite-v1.2.27-Source.zip;
-sudo pacman -S gcc cmake ninja libx11 libxcursor mesa-libgl fontconfig
+sudo pacman -S gcc cmake ninja libx11 libxcursor mesa-libgl fontconfig unzip
 cd ~ ;mkdir deps ;cd deps ;mkdir skia ;cd ~/Downloads ;sudo unzip Skia-Linux-Release-x64.zip -d ~/deps/skia
 cd ~; mkdir aseprite ;cd ~/Downloads ;sudo unzip Aseprite-v1.2.27-Source.zip -d ~/aseprite ;cd ~/aseprite; mkdir build ;cd build; cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
