@@ -1,4 +1,4 @@
-# Guia de instalção Aseprite
+# Guia de instalação Aseprite
 
 ---
 
