@@ -32,7 +32,7 @@ sudo dnf install -y gcc-c++ cmake ninja-build libX11-devel libXcursor-devel libX
 
 #### Arch:
 ```sh
-sudo pacman -S gcc cmake ninja libx11 libxcursor mesa-libgl fontconfig
+sudo pacman -S gcc cmake ninja libx11 libxcursor mesa-libgl fontconfig unzip
 ```
 
 ## Instalação
