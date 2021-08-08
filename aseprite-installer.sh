@@ -56,8 +56,13 @@ rm Aseprite-v1.2.27-Source.zip
 rm $SKIA_ZIP
 
 # Criar icone
-wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia-Aseprite/main/aseprite.png
-sudo mv aseprite.png /usr/share/icons/hicolor/48x48/apps
+cd $HOME/aseprite/build/bin/aseprite/data/icons
+sudo cp ase16.png /usr/share/icons/hicolor/16x16/apps/aseprite.png
+sudo cp ase32.png /usr/share/icons/hicolor/32x32/apps/aseprite.png
+sudo cp ase48.png /usr/share/icons/hicolor/48x48/apps/aseprite.png
+sudo cp ase64.png /usr/share/icons/hicolor/64x64/apps/aseprite.png
+sudo cp ase128.png /usr/share/icons/hicolor/128x128/apps/aseprite.png
+sudo cp ase256.png /usr/share/icons/hicolor/256x256/apps/aseprite.png
 echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/aseprite.desktop
 echo "Type=Application" | sudo tee -a /usr/share/applications/aseprite.desktop
 echo "Name=Aseprite" | sudo tee -a /usr/share/applications/aseprite.desktop
