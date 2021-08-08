@@ -61,6 +61,7 @@ sudo mv aseprite.png /usr/share/icons/hicolor/48x48/apps
 echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/aseprite.desktop
 echo "Type=Application" | sudo tee -a /usr/share/applications/aseprite.desktop
 echo "Name=Aseprite" | sudo tee -a /usr/share/applications/aseprite.desktop
-echo "Exec=sh -c \"$HOME/aseprite/build/bin/./aseprite\" " | sudo tee -a /usr/share/applications/aseprite.desktop
-echo "Icon=/usr/share/icons/hicolor/48x48/apps/aseprite.png" | sudo tee -a /usr/share/applications/aseprite.desktop
+echo "Exec=sh -c \"$HOME/aseprite/build/bin/aseprite\" " | sudo tee -a /usr/share/applications/aseprite.desktop
+echo "Icon=aseprite" | sudo tee -a /usr/share/applications/aseprite.desktop
 echo "Terminal=false" | sudo tee -a /usr/share/applications/aseprite.desktop
+echo "Categories=Graphics;2DGraphics;" | sudo tee -a /usr/share/applications/aseprite.desktop
