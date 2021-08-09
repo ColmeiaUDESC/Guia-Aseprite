@@ -86,10 +86,10 @@ o processo. A esse ponto, o Aseprite está construido e pronto para ser usado, p
 
 ## Criando o .desktop:
 
-Copie e cole no terminal,
+Após compilar o Aseprite, rode o seguinte comando no terminal para criar um .desktop para o usuário atual:
 
 ```sh
-cd ~/Downloads ; wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia-Aseprite/main/aseprite.png ;mv aseprite.png ~/../../usr/share/icons/hicolor/48x48/apps ;cd ~/../../usr/share/applications/ ;sudo echo "[Desktop Entry]" >> aseprite.desktop ;sudo echo "Type=Application" >> aseprite.desktop ;sudo echo "Name=Aseprite" >> aseprite.desktop ;sudo echo "Exec=sh -c "~/aseprite/build/bin/./aseprite" " >> aseprite.desktop ;sudo echo "Icon=/usr/share/icons/hicolor/48x48/apps/aseprite.png" >> aseprite.desktop ;sudo echo "Terminal=false" >> aseprite.desktop
+cd $HOME/aseprite/build/bin/data/icons; cp ase16.png $HOME/.local/share/icons/hicolor/16x16/apps/aseprite.png; cp ase32.png $HOME/.local/share/icons/hicolor/32x32/apps/aseprite.png; cp ase48.png $HOME/.local/share/icons/hicolor/48x48/apps/aseprite.png; cp ase64.png $HOME/.local/share/icons/hicolor/64x64/apps/aseprite.png; cp ase128.png $HOME/.local/share/icons/hicolor/128x128/apps/aseprite.png; cp ase256.png $HOME/.local/share/icons/hicolor/256x256/apps/aseprite.png; $HOME/.local/share/applications/ ;echo "[Desktop Entry]" > aseprite.desktop ;echo "Type=Application" >> aseprite.desktop ;echo "Name=Aseprite" >> aseprite.desktop ;echo "Exec=sh -c "~/aseprite/build/bin/./aseprite" " >> aseprite.desktop ;echo "Icon=aseprite" >> aseprite.desktop ;echo "Terminal=false">> aseprite.desktop; echo "Categories=Graphics;2DGraphics;" >> aseprite.desktop
 
 ```
 

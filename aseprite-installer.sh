@@ -56,11 +56,20 @@ rm Aseprite-v1.2.27-Source.zip
 rm $SKIA_ZIP
 
 # Criar icone
-wget -A png https://raw.githubusercontent.com/ColmeiaUDESC/Guia-Aseprite/main/aseprite.png
-sudo mv aseprite.png /usr/share/icons/hicolor/48x48/apps
-echo "[Desktop Entry]" | sudo tee -a /usr/share/applications/aseprite.desktop
-echo "Type=Application" | sudo tee -a /usr/share/applications/aseprite.desktop
-echo "Name=Aseprite" | sudo tee -a /usr/share/applications/aseprite.desktop
-echo "Exec=sh -c \"$HOME/aseprite/build/bin/./aseprite\" " | sudo tee -a /usr/share/applications/aseprite.desktop
-echo "Icon=/usr/share/icons/hicolor/48x48/apps/aseprite.png" | sudo tee -a /usr/share/applications/aseprite.desktop
-echo "Terminal=false" | sudo tee -a /usr/share/applications/aseprite.desktop
+DIR_SHARE=$HOME/.local/share
+DIR_ICONES=$DIR_SHARE/icons/hicolor
+ASEPRITE_DESKTOP=$DIR_SHARE/applications/aseprite.desktop
+cd $HOME/aseprite/build/bin/data/icons
+cp ase16.png $DIR_ICONES/16x16/apps/aseprite.png
+cp ase32.png $DIR_ICONES/32x32/apps/aseprite.png
+cp ase48.png $DIR_ICONES/48x48/apps/aseprite.png
+cp ase64.png $DIR_ICONES/64x64/apps/aseprite.png
+cp ase128.png $DIR_ICONES/128x128/apps/aseprite.png
+cp ase256.png $DIR_ICONES/256x256/apps/aseprite.png
+echo "[Desktop Entry]" > $ASEPRITE_DESKTOP
+echo "Type=Application" >> $ASEPRITE_DESKTOP
+echo "Name=Aseprite" >> $ASEPRITE_DESKTOP
+echo "Exec=sh -c \"$HOME/aseprite/build/bin/aseprite\" " >> $ASEPRITE_DESKTOP
+echo "Icon=aseprite" >> $ASEPRITE_DESKTOP
+echo "Terminal=false" >> $ASEPRITE_DESKTOP
+echo "Categories=Graphics;2DGraphics;" >> $ASEPRITE_DESKTOP
