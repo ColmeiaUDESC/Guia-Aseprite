@@ -20,7 +20,7 @@ echo -e "\e[1;33m
 "
 
 # Checar a arquitetura e sistema operacional na qual estamos rodando
-OS_ARCH="$(arch)"
+OS_ARCH="$(uname -m)"
 command -v apt-get > /dev/null && OS_DISTRO="debian"
 command -v pacman > /dev/null && OS_DISTRO="arch"
 command -v dnf > /dev/null && OS_DISTRO="fedora"
