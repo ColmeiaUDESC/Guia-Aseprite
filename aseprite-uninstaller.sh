@@ -49,7 +49,7 @@ read -p "Você têm certeza que deseja desinstalar o aseprite localizado no dire
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  sudo rm -r ~/aseprite
+  sudo rm -r $DIR_INSTALACAO/aseprite
   sudo rm -r ~/deps
   sudo rm $HOME/.local/share/applications/aseprite.desktop
   sudo rm $HOME/.local/share/icons/hicolor/16x16/apps/aseprite.png
