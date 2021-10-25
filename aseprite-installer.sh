@@ -26,6 +26,24 @@ echo -e "\e[1;33m
 ----------------------------------------------------
 "
 
+# Processar argumentos para conseguir o diretorio padrao
+DIR_INSTALACAO=$HOME
+ARGS=$(getopt -a -n aseprite-installer.sh -o f: --long dir-instalacao: -- "$@")
+eval set -- "$ARGS"
+while :
+do
+  case "$1" in
+    --dir-instalacao) 
+      if [ -d "$2" ]; then
+        DIR_INSTALACAO="$2"
+      else
+        echo "$2 não é um diretório válido. Instalando no diretório padrão $DIR_INSTALACAO"
+      fi
+      shift 2 ;;
+    --) shift; break ;;
+  esac
+done
+
 # Checar a arquitetura e sistema operacional na qual estamos rodando
 OS_ARCH="$(uname -m)"
 command -v apt-get > /dev/null && OS_DISTRO="debian"
@@ -43,10 +61,10 @@ cd ~/Downloads
 [ $OS_ARCH = "x86" ] && { SKIA_ZIP="Skia-Linux-Release-x86.zip"; SKIA_RELEASE="Release-x86"; } 
 [ $OS_ARCH = "x86_64" ] && { SKIA_ZIP="Skia-Linux-Release-x64.zip";  SKIA_RELEASE="Release-x64"; }
 wget https://github.com/aseprite/skia/releases/download/m81-b607b32047/$SKIA_ZIP; mkdir -p ~/deps/skia; sudo unzip $SKIA_ZIP -d ~/deps/skia
-wget https://github.com/aseprite/aseprite/releases/download/v1.2.27/Aseprite-v1.2.27-Source.zip; mkdir -p ~/aseprite/build; sudo unzip Aseprite-v1.2.27-Source.zip -d ~/aseprite;
+wget https://github.com/aseprite/aseprite/releases/download/v1.2.27/Aseprite-v1.2.27-Source.zip; mkdir -p $DIR_INSTALACAO/aseprite/build; sudo unzip Aseprite-v1.2.27-Source.zip -d $DIR_INSTALACAO/aseprite;
 
 # Compilar o aseprite
-cd ~/aseprite/build
+cd $DIR_INSTALACAO/aseprite/build
 cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DLAF_BACKEND=skia \
@@ -70,7 +88,7 @@ rm $SKIA_ZIP
 DIR_SHARE=$HOME/.local/share
 DIR_ICONES=$DIR_SHARE/icons/hicolor
 ASEPRITE_DESKTOP=$DIR_SHARE/applications/aseprite.desktop
-cd $HOME/aseprite/build/bin/data/icons
+cd $DIR_INSTALACAO/aseprite/build/bin/data/icons
 mkdir -p $DIR_ICONES/16x16/apps && cp ase16.png $_/aseprite.png 
 mkdir -p $DIR_ICONES/32x32/apps && cp ase32.png $_/aseprite.png
 mkdir -p $DIR_ICONES/48x48/apps && cp ase48.png $_/aseprite.png
