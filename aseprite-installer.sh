@@ -33,7 +33,7 @@ eval set -- "$ARGS"
 while :
 do
   case "$1" in
-    --dir-instalacao) 
+    -f | --dir-instalacao) 
       if [ -d "$2" ]; then
         DIR_INSTALACAO="$2"
       else
