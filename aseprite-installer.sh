@@ -48,7 +48,11 @@ cmake \
   -DSKIA_LIBRARY=$HOME/deps/skia/out/$SKIA_RELEASE/libskia.a \
   -G Ninja \
   ..
-ninja aseprite
+var=$(ninja aseprite | tee /dev/tty)
+echo "Executando solução alternativa ao erro de compilação"
+var=$(echo $var | grep -o -P '(?<=&&).*(?=&&)')
+var=${var/"lib/libwebp.a"}
+$var
 
 # Limpar pasta downloads
 cd ~/Downloads
