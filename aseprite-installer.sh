@@ -29,7 +29,7 @@ command -v dnf > /dev/null && OS_DISTRO="fedora"
 # Instalar dependencias
 [ $OS_DISTRO = "debian" ] && sudo apt-get install -y g++ cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
 [ $OS_DISTRO = "arch" ] && sudo pacman -S --needed gcc cmake ninja libx11 libxcursor mesa-libgl fontconfig unzip
-[ $OS_DISTRO = "dnf" ] && sudo dnf install -y gcc-c++ cmake ninja-build libX11-devel libXcursor-devel libXi-devel mesa-libGL-devel fontconfig-devel
+[ $OS_DISTRO = "fedora" ] && sudo dnf install -y gcc-c++ cmake ninja-build libX11-devel libXcursor-devel libXi-devel mesa-libGL-devel fontconfig-devel
 
 # Baixar os arquivos
 cd ~/Downloads
