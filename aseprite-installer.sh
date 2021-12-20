@@ -64,12 +64,12 @@ DIR_SHARE=$HOME/.local/share
 DIR_ICONES=$DIR_SHARE/icons/hicolor
 ASEPRITE_DESKTOP=$DIR_SHARE/applications/aseprite.desktop
 cd $HOME/aseprite/build/bin/data/icons
-cp ase16.png $DIR_ICONES/16x16/apps/aseprite.png
-cp ase32.png $DIR_ICONES/32x32/apps/aseprite.png
-cp ase48.png $DIR_ICONES/48x48/apps/aseprite.png
-cp ase64.png $DIR_ICONES/64x64/apps/aseprite.png
-cp ase128.png $DIR_ICONES/128x128/apps/aseprite.png
-cp ase256.png $DIR_ICONES/256x256/apps/aseprite.png
+mkdir -p $DIR_ICONES/16x16/apps && cp ase16.png $_/aseprite.png 
+mkdir -p $DIR_ICONES/32x32/apps && cp ase32.png $_/aseprite.png
+mkdir -p $DIR_ICONES/48x48/apps && cp ase48.png $_/aseprite.png
+mkdir -p $DIR_ICONES/64x64/apps && cp ase64.png $_/aseprite.png
+mkdir -p $DIR_ICONES/128x128/apps && cp ase128.png $_/aseprite.png
+mkdir -p $DIR_ICONES/256x256/apps && cp ase256.png $_/aseprite.png
 echo "[Desktop Entry]" > $ASEPRITE_DESKTOP
 echo "Type=Application" >> $ASEPRITE_DESKTOP
 echo "Name=Aseprite" >> $ASEPRITE_DESKTOP
