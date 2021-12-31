@@ -45,19 +45,24 @@ then
   exit 1
 fi
 
-read -p "Você têm certeza que deseja desinstalar o aseprite e deletar TODO o conteúdo localizado no diretório $DIR_INSTALACAO? (Y/N): " -n 1 -r
+read -p "Você têm certeza que deseja desinstalar o aseprite e deletar TODO o conteúdo localizado no diretório $DIR_INSTALACAO? (Y/N): " RESPOSTA
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-  sudo rm -r $DIR_INSTALACAO/aseprite
-  sudo rm -r ~/deps
-  sudo rm $HOME/.local/share/applications/aseprite.desktop
-  sudo rm $HOME/.local/share/icons/hicolor/16x16/apps/aseprite.png
-  sudo rm $HOME/.local/share/icons/hicolor/32x32/apps/aseprite.png
-  sudo rm $HOME/.local/share/icons/hicolor/48x48/apps/aseprite.png
-  sudo rm $HOME/.local/share/icons/hicolor/64x64/apps/aseprite.png
-  sudo rm $HOME/.local/share/icons/hicolor/128x128/apps/aseprite.png
-  sudo rm $HOME/.local/share/icons/hicolor/256x256/apps/aseprite.png
-else
-  echo "Abortando..."
-fi
+case "$RESPOSTA" in
+  [yY] | [yY][eE][sS] | [sS][iI][mM])
+    sudo rm -r $DIR_INSTALACAO/aseprite
+    sudo rm -r ~/deps
+    sudo rm $HOME/.local/share/applications/aseprite.desktop
+    sudo rm $HOME/.local/share/icons/hicolor/16x16/apps/aseprite.png
+    sudo rm $HOME/.local/share/icons/hicolor/32x32/apps/aseprite.png
+    sudo rm $HOME/.local/share/icons/hicolor/48x48/apps/aseprite.png
+    sudo rm $HOME/.local/share/icons/hicolor/64x64/apps/aseprite.png
+    sudo rm $HOME/.local/share/icons/hicolor/128x128/apps/aseprite.png
+    sudo rm $HOME/.local/share/icons/hicolor/256x256/apps/aseprite.png
+    ;;
+  [nN] | [nN][oO] | [nN][aAãÃ][oO])
+    echo "Cancelando processo de desinstalação. Nenhum arquivo foi modificado."
+    ;;
+  *)
+    echo "Entrada inválida"
+    ;;
+esac
