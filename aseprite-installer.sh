@@ -33,12 +33,13 @@ eval set -- "$ARGS"
 while :
 do
   case "$1" in
-    -f | --dir-instalacao) 
-      if [ -d "$2" ]; then
-        DIR_INSTALACAO="$2"
-      else
-        echo "$2 não é um diretório válido. Instalando no diretório padrão $DIR_INSTALACAO"
+    -f | --dir-instalacao)
+      if [ -f $2 ]; then
+        echo "$2 é um arquivo. Abortando."
+        exit 1
       fi
+      mkdir -p $2
+      DIR_INSTALACAO=$2
       shift 2 ;;
     --) shift; break ;;
   esac
