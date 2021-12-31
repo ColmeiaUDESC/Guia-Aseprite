@@ -32,7 +32,7 @@ eval set -- "$ARGS"
 while :
 do
   case "$1" in
-    --dir-instalacao) 
+    -f | --dir-instalacao) 
         DIR_INSTALACAO="$2"
         shift 2 ;;
     --) shift; break ;;
@@ -49,7 +49,7 @@ read -p "Você têm certeza que deseja desinstalar o aseprite e deletar TODO o c
 echo
 case "$RESPOSTA" in
   [yY] | [yY][eE][sS] | [sS][iI][mM])
-    sudo rm -r $DIR_INSTALACAO/aseprite
+    sudo rm -r $DIR_INSTALACAO
     sudo rm -r ~/deps
     sudo rm $HOME/.local/share/applications/aseprite.desktop
     sudo rm $HOME/.local/share/icons/hicolor/16x16/apps/aseprite.png
