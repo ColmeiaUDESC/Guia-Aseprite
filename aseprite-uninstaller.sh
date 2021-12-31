@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Impedir que o usuário rode o script sendo root
 if [ $(id -u) = 0 ];
@@ -45,7 +45,7 @@ then
   exit 1
 fi
 
-read -p "Você têm certeza que deseja desinstalar o aseprite localizado no diretório $DIR_INSTALACAO? (Y/N): " -n 1 -r
+read -p "Você têm certeza que deseja desinstalar o aseprite e deletar TODO o conteúdo localizado no diretório $DIR_INSTALACAO? (Y/N): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
