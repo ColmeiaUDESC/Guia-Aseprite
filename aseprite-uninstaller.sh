@@ -34,8 +34,12 @@ do
   case "$1" in
     -f | --dir-instalacao) 
         DIR_INSTALACAO="$2"
-        shift 2 ;;
-    --) shift; break ;;
+        shift 2
+        ;;
+    --)
+      shift
+      break
+      ;;
   esac
 done
 

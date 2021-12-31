@@ -40,8 +40,12 @@ do
       fi
       mkdir -p $2
       DIR_INSTALACAO=$2
-      shift 2 ;;
-    --) shift; break ;;
+      shift 2
+      ;;
+    --) 
+      shift
+      break
+      ;;
   esac
 done
 
