@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Impedir que o usuário rode o script sendo root
+if [ $(id -u) = 0 ];
+then
+  echo "Por favor, execute esse script sem usar sudo ou ser usuário root"
+  exit 1
+fi
+
 echo -e "\e[1;33m
 
   ____ ___  _     __  __ _____ ___    _    
