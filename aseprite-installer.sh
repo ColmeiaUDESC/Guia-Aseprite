@@ -83,6 +83,7 @@ echo "Executando solução alternativa ao erro de compilação"
 var=$(echo $var | grep -o -P '(?<=&&).*(?=&&)')
 var=${var/"lib/libwebp.a"}
 $var
+echo "Solução aplicada. Caso não haja nenhum erro após esta mensagem, o Aseprite foi compilado com sucesso."
 
 # Limpar pasta downloads
 cd ~/Downloads
@@ -107,3 +108,5 @@ echo "Exec=sh -c \"$DIR_INSTALACAO/aseprite/build/bin/aseprite\" " >> $ASEPRITE_
 echo "Icon=aseprite" >> $ASEPRITE_DESKTOP
 echo "Terminal=false" >> $ASEPRITE_DESKTOP
 echo "Categories=Graphics;2DGraphics;" >> $ASEPRITE_DESKTOP
+
+echo "Finalizado"
