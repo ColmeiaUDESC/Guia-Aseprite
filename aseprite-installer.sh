@@ -51,43 +51,44 @@ done
 
 # Checar a arquitetura e sistema operacional na qual estamos rodando
 OS_ARCH="$(uname -m)"
+[ $OS_ARCH = "x86_64" ] && OS_ARCH="x64"
 command -v apt-get > /dev/null && OS_DISTRO="debian"
 command -v pacman > /dev/null && OS_DISTRO="arch"
 command -v dnf > /dev/null && OS_DISTRO="fedora"
 [ -z ${OS_DISTRO+x} ] && { echo "Sistema operacional não suportado. Abortando.."; exit 1; }
 
 # Instalar dependencias
-[ $OS_DISTRO = "debian" ] && sudo apt-get install -y g++ cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
-[ $OS_DISTRO = "arch" ] && sudo pacman -S --needed gcc cmake ninja libx11 libxcursor mesa-libgl fontconfig unzip
-[ $OS_DISTRO = "fedora" ] && sudo dnf install -y gcc-c++ cmake ninja-build libX11-devel libXcursor-devel libXi-devel mesa-libGL-devel fontconfig-devel
+[ $OS_DISTRO = "debian" ] && sudo apt-get install -y g++ clang-11 libc++-11-dev libc++abi-11-dev cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev && export CC=/usr/bin/clang-11 && export CXX=/usr/bin/clang++-11
+[ $OS_DISTRO = "arch" ] && sudo pacman -S --needed gcc cmake gcc clang libc++ cmake ninja libx11 libxcursor mesa-libgl fontconfig unzip && export CC=/usr/bin/clang && export CXX=/usr/bin/clang++
+[ $OS_DISTRO = "fedora" ] && sudo dnf install -y gcc-c++ clang libcxx-devel cmake ninja-build libX11-devel libXcursor-devel libXi-devel mesa-libGL-devel fontconfig-devel && export CC=/usr/bin/clang && export CXX=/usr/bin/clang++
 
 # Baixar os arquivos
 cd ~/Downloads
-[ $OS_ARCH = "x86" ] && { SKIA_ZIP="Skia-Linux-Release-x86.zip"; SKIA_RELEASE="Release-x86"; } 
-[ $OS_ARCH = "x86_64" ] && { SKIA_ZIP="Skia-Linux-Release-x64.zip";  SKIA_RELEASE="Release-x64"; }
-wget https://github.com/aseprite/skia/releases/download/m81-b607b32047/$SKIA_ZIP; mkdir -p ~/deps/skia; sudo unzip $SKIA_ZIP -d ~/deps/skia
-wget https://github.com/aseprite/aseprite/releases/download/v1.2.27/Aseprite-v1.2.27-Source.zip; mkdir -p $DIR_INSTALACAO/aseprite/build; sudo unzip Aseprite-v1.2.27-Source.zip -d $DIR_INSTALACAO/aseprite;
+SKIA_ZIP="Skia-Linux-Release-$OS_ARCH-libc++.zip"
+SKIA_RELEASE="Release-$OS_ARCH"
+VERSION="1.2.40"
+ASEPRITE_ZIP="Aseprite-v$VERSION-Source.zip"
+wget https://github.com/aseprite/skia/releases/download/m102-861e4743af/$SKIA_ZIP; mkdir -p ~/deps/skia; sudo unzip $SKIA_ZIP -d ~/deps/skia
+wget https://github.com/aseprite/aseprite/releases/download/v$VERSION/$ASEPRITE_ZIP; mkdir -p $DIR_INSTALACAO/aseprite/build; sudo unzip $ASEPRITE_ZIP -d $DIR_INSTALACAO/aseprite;
 
 # Compilar o aseprite
 cd $DIR_INSTALACAO/aseprite/build
+
 cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_CXX_FLAGS:STRING=-stdlib=libc++ \
+  -DCMAKE_EXE_LINKER_FLAGS:STRING=-stdlib=libc++ \
   -DLAF_BACKEND=skia \
   -DSKIA_DIR=$HOME/deps/skia \
   -DSKIA_LIBRARY_DIR=$HOME/deps/skia/out/$SKIA_RELEASE \
   -DSKIA_LIBRARY=$HOME/deps/skia/out/$SKIA_RELEASE/libskia.a \
   -G Ninja \
   ..
-var=$(ninja aseprite | tee /dev/tty)
-echo "Executando solução alternativa ao erro de compilação"
-var=$(echo $var | grep -o -P '(?<=&&).*(?=&&)')
-var=${var/"lib/libwebp.a"}
-$var
-echo "Solução aplicada. Caso não haja nenhum erro após esta mensagem, o Aseprite foi compilado com sucesso."
+ninja aseprite
 
 # Limpar pasta downloads
 cd ~/Downloads
-rm Aseprite-v1.2.27-Source.zip
+rm $ASEPRITE_ZIP
 rm $SKIA_ZIP
 
 # Criar icone
